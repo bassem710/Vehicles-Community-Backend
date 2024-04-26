@@ -10,6 +10,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -18,7 +21,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public Map<String, Object> register(RegisterRequest request) {
         var user = User.builder()
             .firstName(request.getFirstName())
             .lastName(request.getLastName())
@@ -27,21 +30,29 @@ public class AuthenticationService {
             .role(Role.USER)
             .build();
         userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-            .token(jwtToken)
-            .build();
+        return AuthenticationResponse(user);
     }
 
-    public AuthenticationResponse login(LoginRequest request) {
+    public Map<String, Object> login(LoginRequest request) {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
         var user = userRepository.findByEmail(request.getEmail())
             .orElseThrow();
+        return AuthenticationResponse(user);
+    }
+
+    private Map<String, Object> AuthenticationResponse(User user) {
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
+        Map<String, Object> responseData = new HashMap<>();
+        responseData.put("firstName", user.getFirstName());
+        responseData.put("lastName", user.getLastName());
+        responseData.put("role", user.getRole());
+        responseData.put("id", user.getId());
+        responseData.put("email", user.getUsername());
+        Map<String, Object> response = new HashMap<>();
+        response.put("userData", responseData);
+        response.put("token", jwtToken);
+        return response;
     }
 }

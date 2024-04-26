@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
@@ -16,14 +18,14 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
+    public ResponseEntity<Map<String, Object>> register(
             @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(authenticationService.register(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(
+    public ResponseEntity<Map<String, Object>> login(
             @RequestBody LoginRequest request
     ) {
         return ResponseEntity.ok(authenticationService.login(request));
