@@ -7,10 +7,10 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
+import static com.VehiclesCommunity.Vehicles.Community.user.Role.ADMIN;
+import static com.VehiclesCommunity.Vehicles.Community.user.Role.USER;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -20,9 +20,7 @@ public class SecurityConfiguration {
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
-    private static final String[] WHITE_LIST_URL = {
-        "/api/v1/auth/**"
-    };
+    private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**", "/api/v1/vehicle/**", "/api/v1/vehicle"};
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
