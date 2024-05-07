@@ -51,11 +51,4 @@ public class AddValidationAspect {
                 event.getLocation() != null &&
                 event.getDate() != null;
     }
-
-    @Before("execution(* com.VehiclesCommunity.Vehicles.Community.wishlist.WishlistController.addToWishlist(..)) && args(request , vehicle_id)")
-    public void beforeAddToWishlist(HttpServletRequest request, Integer vehicle_id) {
-        if (vehicle_id == null ) {
-            throw new IllegalArgumentException("Invalid add to wishlist");
-        }
-    }
 }
