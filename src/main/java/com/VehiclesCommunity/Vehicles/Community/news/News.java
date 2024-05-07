@@ -17,7 +17,7 @@ public class News {
     @Column
     private Integer id;
     @Column
-    private String desc;
+    private String description;
     @Column
     private String title;
     @Column
