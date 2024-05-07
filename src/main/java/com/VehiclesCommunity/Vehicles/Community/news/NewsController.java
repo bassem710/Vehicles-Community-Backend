@@ -42,8 +42,8 @@ public class NewsController {
             response.put("message", "News not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
-        response.put("message", "News deleted successfully");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        response.put("message","Event is deleted successfully");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 
