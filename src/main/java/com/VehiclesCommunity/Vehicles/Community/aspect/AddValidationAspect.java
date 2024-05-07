@@ -2,6 +2,7 @@ package com.VehiclesCommunity.Vehicles.Community.aspect;
 
 import com.VehiclesCommunity.Vehicles.Community.appointment.AppointmentRequestDto;
 import com.VehiclesCommunity.Vehicles.Community.event.Event;
+import com.VehiclesCommunity.Vehicles.Community.news.News;
 import com.VehiclesCommunity.Vehicles.Community.vehicle.Vehicle;
 import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.annotation.Aspect;
@@ -50,5 +51,18 @@ public class AddValidationAspect {
                 event.getDescription() != null&&
                 event.getLocation() != null &&
                 event.getDate() != null;
+    }
+
+    @Before("execution(* com.VehiclesCommunity.Vehicles.Community.news.NewsController.addNewNews(..)) && args(news)")
+    public void beforeAddNewNews(News news) {
+        if (news == null || !isValidNews(news)) {
+            throw new IllegalArgumentException("Invalid news data");
+        }
+    }
+
+    private boolean isValidNews(News news) {
+        return news.getTitle() != null &&
+                news.getDescription() != null &&
+                news.getImage() != null;
     }
 }
