@@ -8,7 +8,5 @@ import java.util.Date;
 @Setter
 @Getter
 public class AppointmentRequestDto {
-    private Integer userId;
     private Date date;
-
 }

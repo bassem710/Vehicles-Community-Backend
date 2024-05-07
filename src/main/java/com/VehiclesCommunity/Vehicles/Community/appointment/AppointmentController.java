@@ -1,10 +1,10 @@
 package com.VehiclesCommunity.Vehicles.Community.appointment;
 
 import com.VehiclesCommunity.Vehicles.Community.user.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +23,16 @@ public class AppointmentController {
         return ResponseEntity.ok(Map.of("data", appointmentService.getAppointments()));
     }
 
+    @GetMapping("myAppointments")
+    public ResponseEntity<Map<String, List<Appointment>>> getMyAppointments(HttpServletRequest request) {
+        User userDetails = (User) request.getAttribute("userDetails");
+        return ResponseEntity.ok(Map.of("data", appointmentService.getMyAppointments(userDetails.getId())));
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<Map<String, String>> addNewAppointment(@RequestBody AppointmentRequestDto requestDto) {
-        System.out.println(requestDto.getUserId());
-        Appointment appointment = new Appointment();
-        appointment.setUser(new User(requestDto.getUserId()));
-        appointment.setDate(requestDto.getDate());
-        appointmentService.addNewAppointment(appointment);
+    public ResponseEntity<Map<String, String>> addNewAppointment(@RequestBody AppointmentRequestDto requestDto, HttpServletRequest request) {
+        User userDetails = (User) request.getAttribute("userDetails");
+        appointmentService.addNewAppointment(userDetails.getId(), requestDto.getDate());
         return ResponseEntity.ok(Map.of("message", "Appointment added successfully"));
     }
 
