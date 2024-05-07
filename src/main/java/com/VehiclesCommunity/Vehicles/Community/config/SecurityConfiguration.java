@@ -9,9 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+//Http Methods
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+//Roles
 import static com.VehiclesCommunity.Vehicles.Community.user.Role.ADMIN;
 import static com.VehiclesCommunity.Vehicles.Community.user.Role.USER;
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 @EnableWebSecurity
@@ -38,6 +43,15 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(req ->
                 req.requestMatchers(WHITE_LIST_URL)
                     .permitAll()
+                    .requestMatchers("/api/v1/wishlist/**").hasAnyAuthority(USER.name())
+                    .requestMatchers(POST, "/api/v1/vehicle/all").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(DELETE, "/api/v1/vehicle/{id}").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(GET, "/api/v1/appointments/all").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(DELETE, "/api/v1/appointments/{id}").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(POST, "/api/v1/news/addNews").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(DELETE, "/api/v1/news/deleteNews/{id}").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(POST, "/api/v1/events/addEvent").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(DELETE, "/api/v1/events/deleteEvent/{id}").hasAnyAuthority(ADMIN.name())
                     .anyRequest()
                     .authenticated()
             )
