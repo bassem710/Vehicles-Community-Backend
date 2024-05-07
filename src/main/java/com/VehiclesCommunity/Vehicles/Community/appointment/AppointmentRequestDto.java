@@ -9,4 +9,11 @@ import java.util.Date;
 @Getter
 public class AppointmentRequestDto {
     private Date date;
+
+    @Override
+    public String toString() {
+        return "AppointmentRequestDto{" +
+                "date=" + date +
+                '}';
+    }
 }
