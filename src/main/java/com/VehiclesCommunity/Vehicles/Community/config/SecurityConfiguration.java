@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -40,6 +41,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
+            .cors(Customizer.withDefaults())
             .authorizeHttpRequests(req ->
                 req.requestMatchers(WHITE_LIST_URL)
                     .permitAll()
@@ -50,7 +52,7 @@ public class SecurityConfiguration {
                     .requestMatchers(DELETE, "/api/v1/appointments/myAppointments").hasAnyAuthority(USER.name())
                     .requestMatchers(GET, "/api/v1/appointments/all").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(DELETE, "/api/v1/appointments/{id}").hasAnyAuthority(ADMIN.name())
-                    .requestMatchers(POST, "/api/v1/news/addNews").hasAnyAuthority(ADMIN.name())
+                    .requestMatchers(POST, "/api/v1/news/add").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(DELETE, "/api/v1/news/deleteNews/{id}").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(POST, "/api/v1/events/addEvent").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(DELETE, "/api/v1/events/deleteEvent/{id}").hasAnyAuthority(ADMIN.name())
