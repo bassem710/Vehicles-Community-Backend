@@ -1,5 +1,6 @@
 package com.VehiclesCommunity.Vehicles.Community.appointment;
 
+import com.VehiclesCommunity.Vehicles.Community.user.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,9 @@ public class AppointmentController {
 
     @PostMapping("/add")
     public ResponseEntity<Map<String, String>> addNewAppointment(@RequestBody AppointmentRequestDto requestDto) {
+        System.out.println(requestDto.getUserId());
         Appointment appointment = new Appointment();
-        appointment.setUserId(requestDto.getUserId());
+        appointment.setUser(new User(requestDto.getUserId()));
         appointment.setDate(requestDto.getDate());
         appointmentService.addNewAppointment(appointment);
         return ResponseEntity.ok(Map.of("message", "Appointment added successfully"));

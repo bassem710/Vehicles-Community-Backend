@@ -18,11 +18,10 @@ public class Appointment {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "user_id")
-    private Integer userId;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    @Column
+
     private Date date;
 }
