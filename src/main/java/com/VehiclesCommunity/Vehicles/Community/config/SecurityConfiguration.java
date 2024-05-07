@@ -48,7 +48,7 @@ public class SecurityConfiguration {
                     .requestMatchers("/api/v1/wishlist/**").hasAnyAuthority(USER.name())
                     .requestMatchers(POST, "/api/v1/vehicle/all").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(DELETE, "/api/v1/vehicle/{id}").hasAnyAuthority(ADMIN.name())
-                        .requestMatchers(DELETE, "/api/v1/appointments/add").hasAnyAuthority(USER.name())
+                    .requestMatchers(DELETE, "/api/v1/appointments/add").hasAnyAuthority(USER.name())
                     .requestMatchers(DELETE, "/api/v1/appointments/myAppointments").hasAnyAuthority(USER.name())
                     .requestMatchers(GET, "/api/v1/appointments/all").hasAnyAuthority(ADMIN.name())
                     .requestMatchers(DELETE, "/api/v1/appointments/{id}").hasAnyAuthority(ADMIN.name())
