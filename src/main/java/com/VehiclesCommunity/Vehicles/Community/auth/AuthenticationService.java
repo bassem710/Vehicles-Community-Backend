@@ -25,7 +25,7 @@ public class AuthenticationService {
         var user = User.builder()
             .firstName(request.getFirstName())
             .lastName(request.getLastName())
-            .email(request.getEmail())
+            .username(request.getUsername())
             .password(passwordEncoder.encode(request.getPassword()))
             .role(Role.USER)
             .build();
@@ -35,9 +35,9 @@ public class AuthenticationService {
 
     public Map<String, Object> login(LoginRequest request) {
         authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
             );
-        var user = userRepository.findByEmail(request.getEmail())
+        var user = userRepository.findByUsername(request.getUsername())
             .orElseThrow();
         return AuthenticationResponse(user);
     }
@@ -49,7 +49,7 @@ public class AuthenticationService {
         responseData.put("lastName", user.getLastName());
         responseData.put("role", user.getRole());
         responseData.put("id", user.getId());
-        responseData.put("email", user.getUsername());
+        responseData.put("username", user.getUsername());
         Map<String, Object> response = new HashMap<>();
         response.put("userData", responseData);
         response.put("token", jwtToken);
