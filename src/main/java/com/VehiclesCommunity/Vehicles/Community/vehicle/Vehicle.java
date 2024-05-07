@@ -16,6 +16,11 @@ public class Vehicle {
     @GeneratedValue
     @Column
     private Integer id;
+
+    public Vehicle(Integer id) {
+        this.id = id;
+    }
+
     @Column
     private String title;
     @Column
