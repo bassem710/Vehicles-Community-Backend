@@ -4,10 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/news")
@@ -30,11 +27,12 @@ public class NewsController {
 
     @PostMapping("/add")
     public ResponseEntity <Map<String,String>> addNewNews(@RequestBody News news){
+        news.setDate(new Date());
         newsService.addNewNews(news);
         return ResponseEntity.ok(Map.of("message", "News added successfully"));
     }
 
-    @DeleteMapping("/deleteNews/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> deleteNews(@PathVariable Integer id) {
         Map<String, String> response = new HashMap<>();
         boolean exists = newsService.deleteNews(id);
@@ -42,7 +40,7 @@ public class NewsController {
             response.put("message", "News not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
-        response.put("message","Event is deleted successfully");
+        response.put("message","News is deleted successfully");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

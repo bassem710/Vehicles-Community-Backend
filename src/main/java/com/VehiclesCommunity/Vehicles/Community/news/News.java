@@ -3,6 +3,8 @@ package com.VehiclesCommunity.Vehicles.Community.news;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,4 +24,6 @@ public class News {
     private String title;
     @Column
     private String image;
+    @Column
+    private Date date;
 }

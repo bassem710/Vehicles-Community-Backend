@@ -40,7 +40,7 @@ public class VehicleController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
         response.put("message", "Vehicle deleted successfully");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/compare/{car1Id}/{car2Id}")

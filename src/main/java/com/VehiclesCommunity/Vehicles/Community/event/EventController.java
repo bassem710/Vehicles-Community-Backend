@@ -8,7 +8,7 @@ import java.util.*;
 @RequestMapping("/api/v1/events")
 public class EventController {
     private final EventService eventService;
-    public EventController(EventService eventService, EventRepository eventRepository) {
+    public EventController(EventService eventService) {
         this.eventService = eventService;
     }
     @GetMapping("/all")
@@ -24,7 +24,7 @@ public class EventController {
         eventService.addEvent(event);
         return ResponseEntity.ok(Map.of("massage","Event is added successfully"));
     }
-    @DeleteMapping("/deleteEvent/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String,String>>deleteEvent(@PathVariable Integer id){
         Map<String,String> response = new HashMap<>();
         boolean exists = eventService.deleteEvent(id);

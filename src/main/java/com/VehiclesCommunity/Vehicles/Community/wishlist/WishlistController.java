@@ -18,7 +18,7 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<Map<String, List<Vehicle>>> getUserWishlist(HttpServletRequest request) {
         User userDetails = (User) request.getAttribute("userDetails");
         return ResponseEntity.ok(Map.of("data", wishlistService.getUserWishlist(userDetails.getId())));

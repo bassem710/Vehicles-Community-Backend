@@ -1,5 +1,6 @@
 package com.VehiclesCommunity.Vehicles.Community.appointment;
 
+import com.VehiclesCommunity.Vehicles.Community.user.Role;
 import com.VehiclesCommunity.Vehicles.Community.user.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,12 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
-    @GetMapping("all")
-    public ResponseEntity<Map<String, List<Appointment>>> getAllAppointments() {
-        return ResponseEntity.ok(Map.of("data", appointmentService.getAppointments()));
-    }
-
-    @GetMapping("myAppointments")
+    @GetMapping
     public ResponseEntity<Map<String, List<Appointment>>> getMyAppointments(HttpServletRequest request) {
         User userDetails = (User) request.getAttribute("userDetails");
+        if(userDetails.getRole() == Role.ADMIN) {
+            return ResponseEntity.ok(Map.of("data", appointmentService.getAppointments()));
+        }
         return ResponseEntity.ok(Map.of("data", appointmentService.getMyAppointments(userDetails.getId())));
     }
 
