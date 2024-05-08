@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.VehiclesCommunity.Vehicles.Community.VehiclesCommunityApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.913 s -- in com.VehiclesCommunity.Vehicles.Community.VehiclesCommunityApplicationTests
