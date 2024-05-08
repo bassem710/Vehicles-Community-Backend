@@ -4,6 +4,7 @@ C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesComm
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\VehiclesCommunityApplication.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\appointment\Appointment.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\config\ApplicationConfig.java
+C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\user\UserService.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\user\UserRepository.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\appointment\AppointmentRequestDto.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\config\JwtService.java
@@ -30,6 +31,7 @@ C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesComm
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\wishlist\WishlistController.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\vehicle\VehicleService.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\event\EventService.java
+C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\user\UserController.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\event\EventRepository.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\vehicle\VehicleController.java
 C:\Users\basse\Desktop\Vehicles-Community-Backend\src\main\java\com\VehiclesCommunity\Vehicles\Community\news\NewsRepository.java

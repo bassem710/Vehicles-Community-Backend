@@ -4,6 +4,7 @@ com\VehiclesCommunity\Vehicles\Community\user\UserRepository.class
 com\VehiclesCommunity\Vehicles\Community\config\SecurityConfiguration.class
 com\VehiclesCommunity\Vehicles\Community\vehicle\VehicleService.class
 com\VehiclesCommunity\Vehicles\Community\config\JwtService.class
+com\VehiclesCommunity\Vehicles\Community\user\UserService.class
 com\VehiclesCommunity\Vehicles\Community\appointment\Appointment$AppointmentBuilder.class
 com\VehiclesCommunity\Vehicles\Community\auth\RegisterRequest$RegisterRequestBuilder.class
 com\VehiclesCommunity\Vehicles\Community\vehicle\Vehicle.class
@@ -20,6 +21,7 @@ com\VehiclesCommunity\Vehicles\Community\vehicle\VehicleController.class
 com\VehiclesCommunity\Vehicles\Community\user\User$UserBuilder.class
 com\VehiclesCommunity\Vehicles\Community\event\EventService.class
 com\VehiclesCommunity\Vehicles\Community\config\CorsConfiguration$1.class
+com\VehiclesCommunity\Vehicles\Community\user\UserController.class
 com\VehiclesCommunity\Vehicles\Community\VehiclesCommunityApplication.class
 com\VehiclesCommunity\Vehicles\Community\appointment\AppointmentRequestDto.class
 com\VehiclesCommunity\Vehicles\Community\auth\AuthenticationController.class
